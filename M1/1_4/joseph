@@ -1,0 +1,67 @@
+/**
+ * Юнусов Нозимжон, АПО-13
+ *
+ * В круг выстроено N человек, пронумерованных числами от 1 до N.
+ * Будем исключать каждого k-ого до тех пор, пока не уцелеет только один человек.
+ * Например, если N=10, k=3, то сначала умрет 3-й, потом 6-й, затем 9-й, затем 2-й,
+ * затем 7-й, потом 1-й, потом 8-й, за ним - 5-й, и потом 10-й. Таким образом, уцелеет 4-й.
+ *
+ * Необходимо определить номер уцелевшего.
+ *
+ * N, k ≤ 10000.
+ */
+
+/**
+ * Описание решения
+ * Используется принципы динамического программирования:
+ *  - задача делится на мелкие кусочки
+ *  - каждое следующее вычисление использует результат предыдущего вычисления
+ *
+ */
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int findSafePosition(int N, int k){
+    if (N == 1){
+        return 1;
+    } else {
+        return ((findSafePosition(N-1, k) + k - 1) % N) + 1;
+    }
+}
+
+int main() {
+    int N, k;
+    cin >> N >> k;
+
+    cout << findSafePosition(N, k) << endl;
+    return 0;
+}
+
+//int findSafePositionFaster(int N, int k){
+//    if (N == 1) {
+//        return 0;
+//    } else if(N > 1 && N < k){
+//        return (findSafePositionFaster(N-1, k) + k) % N;
+//    } else if (k <= N) {
+//        int N1 = N - (int)((float)N/ (float)k) ;
+//        int res = findSafePositionFaster(N1, k) - (N % k);
+//        if (res < 0) res += N;
+//        else res+=res/(k-1);
+////        return (k * res % N1) / (k - 1);
+//        return res;
+//    }
+//}
+
+//long long joseph (long long n,long long k) {
+//    if (n==1LL) return 0LL;
+//    if (k==1LL) return n-1LL;
+//    if (k>n) return (joseph(n-1LL,k)+k)%n;
+//    long long cnt=n/k;
+//    long long res=joseph(n-cnt,k);
+//    res-=n%k;
+//    if (res<0LL) res+=n;
+//    else res+=res/(k-1LL);
+//    return res;
+//}

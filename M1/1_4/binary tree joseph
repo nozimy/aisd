@@ -1,0 +1,73 @@
+//class Node {
+//public:
+//    int iElement;
+//    Node *iLeft;
+//    Node *iRight;
+//    int iSize;
+//    Node(int element){
+//        iElement = element;
+//        iLeft = iRight = NULL;
+//        iSize = 1;
+//    }
+//    void recomputeSize(){
+//        int leftSize = (iLeft != NULL) ? iLeft->iSize : 0;
+//        int rightSize = (iRight != NULL) ? iRight->iSize : 0;
+//        iSize = leftSize + 1 + rightSize;
+//    }
+//};
+//
+//// Construct the tree.
+////public RankTree(int[] elements) {
+////    iRoot = buildTree(elements, 0, elements.length - 1);
+////}
+//// Internal method to build tree for elements from i to j.
+//Node * buildTree(int elements[], int i, int j){
+//    if (j < i) return NULL;
+//    if (i == j) return new Node(elements[i]);
+//    int mid = (i + j) / 2;
+//    Node *t = new Node(elements[mid]);
+//    t->iLeft = buildTree(elements, i, mid - 1);
+//    t->iRight = buildTree(elements, mid + 1, j);
+//    t->recomputeSize();
+//    return t;
+//}
+//
+//// Find item at rank k in the tree.
+//// returns null if not found.
+////int find(int k) {
+////    return elementAt(find(k, iRoot));
+////}
+//
+//// Internal method to find node at rank k in a subtree rooted at t.
+//// returns node containing the matched item.
+//Node find(int k, Node t) {
+//    if (t == NULL) cout << "IllegalArgumentException \n";
+//    int leftSize = (t.iLeft != NULL) ? t.iLeft.iSize : 0;
+//    if (k < leftSize) return find(k, t.iLeft);
+//    if (k == leftSize) return t;
+//    return find(k - leftSize - 1, t.iRight);
+//}
+//
+//// Remove element at rank k from the tree..
+//public void remove(int k) {
+//    iRoot = remove(k, iRoot);
+//}
+//
+//// Internal method to remove node at rank k from a subtree rooted at t.
+//// returns the new root.
+//private Node remove(int k, Node t) {
+//    if (t == NULL) cout << "IllegalArgumentException \n";
+//    int leftSize = (t.iLeft != NULL) ? t.iLeft.iSize : 0;
+//    if (k < leftSize) t.iLeft = remove(k, t.iLeft);
+//    else if (k > leftSize) t.iRight = remove(k - leftSize - 1, t.iRight);
+//    else {
+//        // need to remove node t
+//        if (t.iLeft != NULL && t.iRight != NULL) { // Two children
+//            t.iElement = findFirst(t.iRight).iElement;
+//            t.iRight = removeFirst(t.iRight);
+//        } else
+//            t = (t.iLeft != NULL) ? t.iLeft : t.iRight;}
+//    if (t != NULL)
+//        t.recomputeSize();
+//    return t;
+//}
