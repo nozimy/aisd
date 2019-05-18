@@ -1,0 +1,24 @@
+#include <bitset>
+std:bitset<8>(uchar) bi
+.to_string()
+cout << b;
+
++ a
++ b
++ c
++ d
++ e
++ f
++ g
++ h
+
++ i
++ k
++ l
++ m
++ n
++ o
++ p
++ q
++ y
++ r
